@@ -18,12 +18,12 @@
             <%= form_with model: @horario, url: crear_horario_sucursal_path(@sucursal) do |f| %>
                 <div class="form-group">
                     <%= f.label :dia, "Día" %>
-                    <%= f.select :dia, options_for_select(Horario.get_dias), {}, {class: 'form-control'} %>
+                    <%= f.select :dia, options_for_select(Horario.get_dias),{}, {class: 'form-control'} %>
                 </div>
 
                 <div class="form-group">
                     <%= f.label :desde, "Hora inicio" %>
-                    <%= f.select :desde, options_for_select(Horario.get_desde), {}, {class: 'form-control'} %>
+                   
 
                 </div>
             <% end %>
