@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Detalles del usuario</h1>    
+    
+    <div class="card">
+      <table class="table">
+        <tr>
+          <td><b>Nombre: </b></td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td><b>Email: </b></td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td><b>Rol: </b></td>
+          <td><%= @user.rol %></td>
+        </tr>
+      
+      </table>
+    </div>
+    
+
+    
+    </div>
+    
+    <%= link_to "Editar usuario", edit_user_path(@user), class: 'btn btn-warning' %>
+    <%= button_to "Eliminar usuario", @user, method: :delete, class: 'btn btn-danger' %>
+    <%= link_to "Volver al listado", users_path, class: 'btn btn-outline-primary' %>
+</div>

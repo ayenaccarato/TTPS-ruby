@@ -1,0 +1,30 @@
+<h1> Lista de sucursales </h1>
+<a href="<%= new_sucursal_path %>" class="btn btn-primary btn-icon-split">
+  <span class="icon text-white-50">
+    <i class="fas fa-flag"></i>
+    </span>
+    <span class="text"> Crear sucursal</span>
+</a>
+
+<br>
+<table class="table">
+  <thead>
+    <th>Nombre</th>
+    <th>Direccion</th>
+    <th>Telefono</th>
+    <th>Localidad</th>
+    <th>Horarios</th>
+  </thead>
+  <tbody>
+  <% @sucursals.each do |sucursal|  %>
+    <tr>
+       <td> <%= sucursal.nombre %> </td>
+       <td> <%= sucursal.direccion %> </td>
+       <td> <%= sucursal.tel %> </td>
+       <td> <%= sucursal.localidad %> </td>
+       <td> <%= link_to "Ver horarios", nuevo_horario_sucursal_path(sucursal), class: "btn btn-primary" %> </td>
+       <td> <%= link_to "Detalles", sucursal_path(sucursal), class: "btn btn-primary" %> </td>
+     </tr>
+  <% end %>
+  </tbody>
+</table>

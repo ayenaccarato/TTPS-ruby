@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-log-12">
+    <div class="card p-5">
+    <%= form_with(model: sucursal) do |form| %>
+      <% if sucursal.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(sucursal.errors.count, "error") %> prohibited this sucursal from being saved:</h2>
+    
+          <ul>
+            <% sucursal.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+      <div class="form-group">
+        <%= form.label :nombre, style: "display: block" %>
+        <%= form.text_field :nombre, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= form.label :direccion, style: "display: block" %>
+        <%= form.text_field :direccion, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= form.label :tel, style: "display: block" %>
+        <%= form.text_field :tel, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= form.label :localidad, style: "display: block" %>
+        <%= form.text_area :localidad, class: 'form-control' %>
+      </div>
+    
+      <div>
+        <%= form.submit "Crear", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    
+
+    </div>
+  </div>
+</div>
+
+
