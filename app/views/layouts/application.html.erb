@@ -35,6 +35,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+    <% if signed_in? %>        
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -63,15 +64,10 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="<%= users_path %>">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Usuarios</span></a>
             </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -83,7 +79,7 @@
 
         </ul>
         <!-- End of Sidebar -->
-
+    <% end %>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 

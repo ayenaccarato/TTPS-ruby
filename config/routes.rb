@@ -3,10 +3,11 @@ Rails.application.routes.draw do
     member do 
       get :nuevo_horario
       post :crear_horario
+      get :horarios
     end
   end
-  resources :users
-  devise_for :users  
+  #resources :users_admin
+  devise_for :users
   get 'index/home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

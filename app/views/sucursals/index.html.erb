@@ -6,8 +6,8 @@
     <span class="text"> Crear sucursal</span>
 </a>
 
-<br>
-<table class="table">
+<br><br><br>
+<table class="table table-bordered">
   <thead>
     <th>Nombre</th>
     <th>Direccion</th>
@@ -22,7 +22,7 @@
        <td> <%= sucursal.direccion %> </td>
        <td> <%= sucursal.tel %> </td>
        <td> <%= sucursal.localidad %> </td>
-       <td> <%= link_to "Ver horarios", nuevo_horario_sucursal_path(sucursal), class: "btn btn-primary" %> </td>
+       <td> <%= link_to "Ver horarios", horarios_sucursal_path(sucursal), class: "btn btn-primary" %> </td>
        <td> <%= link_to "Detalles", sucursal_path(sucursal), class: "btn btn-primary" %> </td>
      </tr>
   <% end %>
