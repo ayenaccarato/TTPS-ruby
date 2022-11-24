@@ -1,24 +1,29 @@
-<table class="table table-bordered">
-
-    <a href="<%= nuevo_horario_sucursal_path %>" class="btn btn-primary btn-icon-split">
-        <span class="icon text-white-50">
-            <i class="fas fa-flag"></i>
-        </span>
-        <span class="text"> Agregar horario</span>
-    </a>
+<a href="<%= nuevo_horario_sucursal_path %>" class="btn btn-primary btn-icon-split">
+    <span class="icon text-white-50">
+        <i class="fas fa-flag"></i>
+    </span>
+    <span class="text"> Agregar horario</span>
+</a>
+<br><br><br>
+<table class="table table-bordered">   
 
     <thead>
         <th>Día</th>
-        <th>Hora</th>
+        <th>Apertura</th>
+        <th>Cierre</th>
     </thead>
 
     <tbody>
         <% @horarios.each do |horario|  %>
-        <tr>
-            <td> <%= horario.dia %> </td>
-            <td> <%= horario.desde %> "hasta" <%= horario.hasta %> </td>
-            <td> <%= link_to "Volver", sucursals_path(sucursal), class: "btn btn-primary" %> </td>
-        </tr>
+            <tr>
+                <td> <%= horario.dia %> </td>
+                <td> <%= horario.desde.strftime("%H:%M") %> </td>
+                <td> <%= horario.hasta.strftime("%H:%M") %> </td>
+                
+            </tr>
         <% end %>
     </tbody>
+    
 </table>
+<td> <%= link_to "Volver", sucursals_path, class: "btn btn-primary" %> </td>
+

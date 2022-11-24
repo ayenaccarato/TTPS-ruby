@@ -6,8 +6,13 @@ Rails.application.routes.draw do
       get :horarios
     end
   end
-  #resources :users_admin
   devise_for :users
+  resources :users do
+    member do
+      post :crear
+    end
+  end
+  
   get 'index/home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -2,8 +2,8 @@
 <a href="<%= new_sucursal_path %>" class="btn btn-primary btn-icon-split">
   <span class="icon text-white-50">
     <i class="fas fa-flag"></i>
-    </span>
-    <span class="text"> Crear sucursal</span>
+  </span>
+  <span class="text"> Crear sucursal</span>
 </a>
 
 <br><br><br>
@@ -16,15 +16,15 @@
     <th>Horarios</th>
   </thead>
   <tbody>
-  <% @sucursals.each do |sucursal|  %>
-    <tr>
-       <td> <%= sucursal.nombre %> </td>
-       <td> <%= sucursal.direccion %> </td>
-       <td> <%= sucursal.tel %> </td>
-       <td> <%= sucursal.localidad %> </td>
-       <td> <%= link_to "Ver horarios", horarios_sucursal_path(sucursal), class: "btn btn-primary" %> </td>
-       <td> <%= link_to "Detalles", sucursal_path(sucursal), class: "btn btn-primary" %> </td>
-     </tr>
-  <% end %>
+    <% @sucursals.each do |sucursal|  %>
+      <tr>
+        <td> <%= sucursal.nombre %> </td>
+        <td> <%= sucursal.direccion %> </td>
+        <td> <%= sucursal.tel %> </td>
+        <td> <%= sucursal.localidad %> </td>
+        <td> <%= link_to "Ver horarios", horarios_sucursal_path(sucursal), class: "btn btn-primary" %> </td>
+        <td> <%= link_to "Detalles", sucursal_path(sucursal), class: "btn btn-primary" %> </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

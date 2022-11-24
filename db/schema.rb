@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_162023) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_145220) do
   create_table "horarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "sucursal_id", null: false
-    t.string "dia"
+    t.integer "dia", default: 0, null: false
     t.time "desde"
     t.time "hasta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sucursal_id", "dia"], name: "index_horarios_on_sucursal_id_and_dia", unique: true
     t.index ["sucursal_id"], name: "index_horarios_on_sucursal_id"
   end
 
@@ -37,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_162023) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.string "rol"
+    t.integer "rol", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
