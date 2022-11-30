@@ -31,7 +31,7 @@
     
       <div class="form-group">
         <%= form.label :localidad, style: "display: block" %>
-        <%= form.text_area :localidad, class: 'form-control' %>
+        <%= form.select :localidad, options_for_select(Locality.all.collect { |x| x.name }, Locality.name), class: 'form-control' %>
       </div>
     
       <div>

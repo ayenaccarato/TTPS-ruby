@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_145220) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_203131) do
   create_table "horarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "sucursal_id", null: false
     t.integer "dia", default: 0, null: false
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_145220) do
     t.index ["sucursal_id"], name: "index_horarios_on_sucursal_id"
   end
 
+  create_table "localities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "province"
+    t.string "name"
+    t.bigint "sucursal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sucursal_id"], name: "index_localities_on_sucursal_id"
+  end
+
   create_table "sucursals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nombre"
     t.string "direccion"
@@ -29,6 +38,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_145220) do
     t.string "localidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "turns", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "date"
+    t.string "motive"
+    t.integer "status"
+    t.string "result"
+    t.bigint "sucursal_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "employee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_turns_on_employee_id"
+    t.index ["sucursal_id"], name: "index_turns_on_sucursal_id"
+    t.index ["user_id"], name: "index_turns_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -46,4 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_145220) do
   end
 
   add_foreign_key "horarios", "sucursals"
+  add_foreign_key "localities", "sucursals"
+  add_foreign_key "turns", "sucursals"
+  add_foreign_key "turns", "users"
+  add_foreign_key "turns", "users", column: "employee_id"
 end

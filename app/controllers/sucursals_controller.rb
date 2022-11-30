@@ -1,4 +1,6 @@
 class SucursalsController < ApplicationController
+
+  load_and_authorize_resource
   before_action :set_sucursal, only: %i[ show edit update destroy ]
 
   # GET /sucursals or /sucursals.json
@@ -22,6 +24,7 @@ class SucursalsController < ApplicationController
   # POST /sucursals or /sucursals.json
   def create
     @sucursal = Sucursal.new(sucursal_params)
+    @sucursal.nombre  = @sucursal.nombre.upcase #Para que se guarde en mayuscula y sepa si existe ese nombre, por como puedan escribirlos
 
     respond_to do |format|
       if @sucursal.save

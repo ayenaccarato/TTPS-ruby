@@ -1,4 +1,5 @@
 class Horario < ApplicationRecord
+
   belongs_to :sucursal
 
   validates :dia, uniqueness: {scope: :sucursal_id}

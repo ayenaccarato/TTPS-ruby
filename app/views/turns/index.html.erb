@@ -1,0 +1,28 @@
+<h1> Lista de turnos </h1>
+<a href="<%= new_turn_path %>" class="btn btn-primary btn-icon-split">
+  <span class="icon text-white-50">
+    <i class="fas fa-flag"></i>
+  </span>
+  <span class="text"> Nuevo turno</span>
+</a>
+
+<br><br><br>
+<table class="table table-bordered">
+  <thead>
+    <th>Fecha y hora</th>
+    <th>Sucursal</th>
+    <th>Cliente</th>
+    <th>Personal Bancario</th>
+  </thead>
+  <tbody>
+    <% @turns.each do |turn|  %>
+      <tr>
+        <td> <%= turn.date %> </td>
+        <td> <%= turn.sucursal %> </td>
+        <td> <%= turn.user %> </td>
+        <td> <%= turn.employee %> </td>
+        <td> <%= link_to "Detalles", turn_path(turn), class: "btn btn-primary" %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

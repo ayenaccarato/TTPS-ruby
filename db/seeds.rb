@@ -6,4 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Sucursal.create( nombre: "sucursal1", direccion: "7 y 49", tel: "4526987", localidad: "La Plata")
+User.create( name: "Admin", email: "admin@gmail.com", password: "123456", password_confirmation: "123456", rol: 0)
+#Locality.create( province: 0, name: "LA PLATA") 
+Sucursal.create( nombre: "SUCURSAL_1", direccion: "7 y 49", tel: "4526987", localidad: "LA PLATA")

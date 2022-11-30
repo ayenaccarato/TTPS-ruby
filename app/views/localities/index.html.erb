@@ -1,0 +1,35 @@
+<h1> Lista de localidades </h1>
+<a href="<%= new_locality_path %>" class="btn btn-primary btn-icon-split">
+  <span class="icon text-white-50">
+    <i class="fas fa-flag"></i>
+    </span>
+    <span class="text"> Crear localidad</span>
+</a>
+
+<br>
+<table class="table">
+  <thead>
+    <th>Nombre</th>
+    <th>Provincia</th>
+    <th></th>
+    
+  </thead>
+  <tbody>
+  <% @localities.each do |locality|  %>
+    <tr>
+       <td> <%= locality.name %> </td>
+       <td> <%= locality.province %> </td>
+       
+
+       <td> <%= link_to "Detalles", locality_path(locality), class: "btn btn-primary" %> </td>
+     </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+  load_and_authorize_resource
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
@@ -18,9 +20,22 @@ class UsersController < ApplicationController
   #     @usuario = User.find(1)
   # end
 
+  def create
+    p @user = User.new(user_params) 
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to user_url(@user), notice: "El usuario se creó exitosamente." }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user_params.compact_blank)
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -46,7 +61,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :rol, :password, :password_confirmation)
     end
 
 end

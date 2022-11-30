@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Detalles de la localidad</h1>    
+    
+    <div class="card">
+      <table class="table">
+        <tr>
+          <td><b>Nombre: </b></td>
+          <td><%= @locality.name %></td>
+        </tr>
+        <tr>
+          <td><b>Provincia: </b></td>
+          <td><%= @locality.province %></td>
+        </tr>
+        <tr> 
+        </tr>
+      
+      </table>
+    </div>
+    
+
+    
+    </div>
+    
+    <%= link_to "Editar localidad", edit_locality_path(@locality), class: 'btn btn-warning' %>
+    <%= button_to "Eliminar localidad", @locality, method: :delete, class: 'btn btn-danger' %>
+    <%= link_to "Volver al listado", localities_path, class: 'btn btn-outline-primary' %>
+</div>
+
