@@ -21,7 +21,7 @@
         <td> <%= sucursal.nombre %> </td>
         <td> <%= sucursal.direccion %> </td>
         <td> <%= sucursal.tel %> </td>
-        <td> <%= sucursal.localidad %> </td>
+        <td> <%= Locality.find(sucursal.locality_id).name %> </td>
         <td> <%= link_to "Ver horarios", horarios_sucursal_path(sucursal), class: "btn btn-primary" %> </td>
         <td> <%= link_to "Detalles", sucursal_path(sucursal), class: "btn btn-primary" %> </td>
       </tr>

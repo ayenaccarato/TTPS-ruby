@@ -17,7 +17,7 @@ class SucursalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create sucursal" do
     assert_difference("Sucursal.count") do
-      post sucursals_url, params: { sucursal: { direccion: @sucursal.direccion, localidad: @sucursal.localidad, nombre: @sucursal.nombre, tel: @sucursal.tel } }
+      post sucursals_url, params: { sucursal: { direccion: @sucursal.direccion, locality_id: @sucursal.locality_id, nombre: @sucursal.nombre, tel: @sucursal.tel } }
     end
 
     assert_redirected_to sucursal_url(Sucursal.last)
@@ -34,7 +34,7 @@ class SucursalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update sucursal" do
-    patch sucursal_url(@sucursal), params: { sucursal: { direccion: @sucursal.direccion, localidad: @sucursal.localidad, nombre: @sucursal.nombre, tel: @sucursal.tel } }
+    patch sucursal_url(@sucursal), params: { sucursal: { direccion: @sucursal.direccion, locality_id: @sucursal.locality_id, nombre: @sucursal.nombre, tel: @sucursal.tel } }
     assert_redirected_to sucursal_url(@sucursal)
   end
 

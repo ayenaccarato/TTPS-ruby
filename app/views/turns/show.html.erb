@@ -1,10 +1,45 @@
-<p style="color: green"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Detalles del turno</h1>    
+    
+    <div class="card">
+      <table class="table">
+        <tr>
+          <td><b>Fecha y hora: </b></td>
+          <td><%= @turn.date %></td>
+        </tr>
+        <tr>
+          <td><b>Sucursal: </b></td>
+          <td><%= Sucursal.find(@turn.sucursal_id).nombre %></td>
+        </tr>
+        <tr>
+          <td><b>Motivo: </b></td>
+          <td><%= @turn.motive %></td>
+        </tr>
+        <tr>
+          <td><b>Personal Bancario: </b></td>
+          <% if !@turn.employee_id.nil? %>
+            <td><%= User.find(@turn.employee_id).name %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td><b>Resultado: </b></td>
+          <td><%= @turn.result %></td>
+        </tr>
+        <tr>
+          <td><b>Estado: </b></td>
+          <td><%= @turn.status %></td>
+        </tr>
+      </table>
+    </div>
+    
 
-<%= render @turn %>
-
-<div>
-  <%= link_to "Edit this turn", edit_turn_path(@turn) %> |
-  <%= link_to "Back to turns", turns_path %>
-
-  <%= button_to "Destroy this turn", @turn, method: :delete %>
+    
+    </div>
+    
+    <%= link_to "Editar turno", edit_turn_path(@turn), class: 'btn btn-warning' %>
+    <%= button_to "Eliminar turno", @turn, method: :delete, class: 'btn btn-danger' %>
+    <%= link_to "Volver al listado", turns_path, class: 'btn btn-outline-primary' %>
 </div>

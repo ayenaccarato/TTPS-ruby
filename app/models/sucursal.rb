@@ -1,6 +1,6 @@
 class Sucursal < ApplicationRecord
-    
-    #has_many :horario
-    validates :nombre, :direccion, :tel, :localidad, presence: true    
-    
+  belongs_to :locality
+  #has_many :horarios
+
+  validates :nombre, :direccion, :tel, :locality_id, presence: true 
 end

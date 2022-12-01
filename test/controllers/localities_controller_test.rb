@@ -17,7 +17,7 @@ class LocalitiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create locality" do
     assert_difference("Locality.count") do
-      post localities_url, params: { locality: { name: @locality.name, province: @locality.province, sucursal_id: @locality.sucursal_id } }
+      post localities_url, params: { locality: { name: @locality.name, province: @locality.province } }
     end
 
     assert_redirected_to locality_url(Locality.last)
@@ -34,7 +34,7 @@ class LocalitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update locality" do
-    patch locality_url(@locality), params: { locality: { name: @locality.name, province: @locality.province, sucursal_id: @locality.sucursal_id } }
+    patch locality_url(@locality), params: { locality: { name: @locality.name, province: @locality.province } }
     assert_redirected_to locality_url(@locality)
   end
 

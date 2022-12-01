@@ -12,7 +12,7 @@ class User < ApplicationRecord
     if cliente?
       Turn.where(user_id: id)
     else personal_bancario?
-      Turn.where(sucursal_id: sucursal_id)
+      Turn.where(sucursal_id: sucursals_id)
     end
   end
 

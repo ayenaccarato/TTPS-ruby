@@ -3,9 +3,7 @@
 one:
   province: 1
   name: MyString
-  sucursal: one
 
 two:
   province: 1
   name: MyString
-  sucursal: two

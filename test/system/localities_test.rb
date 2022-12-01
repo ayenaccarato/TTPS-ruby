@@ -16,7 +16,6 @@ class LocalitiesTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @locality.name
     fill_in "Province", with: @locality.province
-    fill_in "Sucursal", with: @locality.sucursal_id
     click_on "Create Locality"
 
     assert_text "Locality was successfully created"
@@ -29,7 +28,6 @@ class LocalitiesTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @locality.name
     fill_in "Province", with: @locality.province
-    fill_in "Sucursal", with: @locality.sucursal_id
     click_on "Update Locality"
 
     assert_text "Locality was successfully updated"

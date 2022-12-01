@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: 2022-11-29 17:31:31
+  date: 2022-12-01 18:53:22
   motive: MyString
   status: 1
   result: MyString
@@ -9,7 +9,7 @@ one:
   user: one
 
 two:
-  date: 2022-11-29 17:31:31
+  date: 2022-12-01 18:53:22
   motive: MyString
   status: 1
   result: MyString

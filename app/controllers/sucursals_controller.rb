@@ -94,6 +94,6 @@ class SucursalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sucursal_params
-      params.require(:sucursal).permit(:nombre, :direccion, :tel, :localidad)
+      params.require(:sucursal).permit(:nombre, :direccion, :tel, :locality_id)
     end
 end

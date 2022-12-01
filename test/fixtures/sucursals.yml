@@ -4,10 +4,10 @@ one:
   nombre: MyString
   direccion: MyString
   tel: MyString
-  localidad: MyString
+  locality: one
 
 two:
   nombre: MyString
   direccion: MyString
   tel: MyString
-  localidad: MyString
+  locality: two

@@ -30,8 +30,8 @@
       </div>
     
       <div class="form-group">
-        <%= form.label :localidad, style: "display: block" %>
-        <%= form.select :localidad, options_for_select(Locality.all.collect { |x| x.name }, Locality.name), class: 'form-control' %>
+        <%= form.label :locality_id, style: "display: block" %>
+        <%= form.select :locality_id, options_for_select(Locality.all.collect { |x| [x.name, x.id] }, Locality.name), class: 'form-control' %>
       </div>
     
       <div>

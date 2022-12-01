@@ -15,7 +15,7 @@ class SucursalsTest < ApplicationSystemTestCase
     click_on "New sucursal"
 
     fill_in "Direccion", with: @sucursal.direccion
-    fill_in "Localidad", with: @sucursal.localidad
+    fill_in "Locality", with: @sucursal.locality_id
     fill_in "Nombre", with: @sucursal.nombre
     fill_in "Tel", with: @sucursal.tel
     click_on "Create Sucursal"
@@ -29,7 +29,7 @@ class SucursalsTest < ApplicationSystemTestCase
     click_on "Edit this sucursal", match: :first
 
     fill_in "Direccion", with: @sucursal.direccion
-    fill_in "Localidad", with: @sucursal.localidad
+    fill_in "Locality", with: @sucursal.locality_id
     fill_in "Nombre", with: @sucursal.nombre
     fill_in "Tel", with: @sucursal.tel
     click_on "Update Sucursal"
