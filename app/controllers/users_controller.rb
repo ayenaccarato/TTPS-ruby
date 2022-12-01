@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :set_user, only: %i[ show edit update destroy ]
 
+  # attr_accessor :listado_users = false
+
   def index
     @users = User.all
   end

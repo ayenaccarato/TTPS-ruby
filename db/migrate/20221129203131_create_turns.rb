@@ -3,7 +3,7 @@ class CreateTurns < ActiveRecord::Migration[7.0]
     create_table :turns do |t|
       t.datetime :date
       t.string :motive
-      t.integer :status
+      t.integer :status, default: 0
       t.string :result
       t.references :sucursal, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: {to_table: :users}

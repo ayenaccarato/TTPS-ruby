@@ -4,7 +4,7 @@ class CreateSucursals < ActiveRecord::Migration[7.0]
       t.string :nombre, uniqueness: true
       t.string :direccion
       t.string :tel
-      t.string :localidad
+      t.references :localities, null: false, foreign_key: true
 
       t.timestamps
     end

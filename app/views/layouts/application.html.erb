@@ -39,49 +39,58 @@
                         <i class="fas fa-laugh-wink"></i>
                     </div>
                     <div class="sidebar-brand-text mx-3">Bienvenido/a <%= current_user.name %></div>
+                    
                 </a>
+                <a href='<%= user_path(current_user, profile: true) %>' class="btn btn-outline-light">Ver Perfil</a> 
 
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->                
+                <% if can? :read, Sucursal %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= sucursals_path %>">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Sucursales</span></a>
+                    </li>
+                <% end %>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= sucursals_path %>">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Sucursales</span></a>
-                </li>
+                <% if can? :manage, User %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= users_path %>">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Usuarios</span></a>
+                    </li>
+                <% end %>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= users_path %>">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Usuarios</span></a>
-                </li>
+                <% if can? :read, Locality %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= localities_path %>">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Localidades</span></a>
+                    </li>
+                <% end %>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= localities_path %>">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Localidades</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= turns_path %>">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Turnos</span></a>
-                </li>
+                <% if can? :read, Turn %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= turns_path %>">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Turnos</span></a>
+                    </li>
+                <% end %>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
                 <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
+                <!-- <div class="text-center d-none d-md-inline">
                     <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
+                </div> --> <!--Es el boton de la flecha -->
 
                 <!-- Cerrar Sesion -->
 
                 <% if current_user %>
-                    <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %>
+                    <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'btn btn-outline-light' %>
                 <% else %>
                     <%= link_to 'Iniciar Sesión', new_user_session_path %>
                 <% end %>
@@ -96,8 +105,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> -->
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>

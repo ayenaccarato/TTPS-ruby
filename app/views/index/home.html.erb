@@ -1,2 +1,7 @@
 <h1>Bienvenido/a</h1>
-<p>no se que voy a hacer</p>
+
+<p>
+    <% if can? :read, User%>
+        <% link_to "Usuarios", users_path %>
+    <% end %>
+</p>

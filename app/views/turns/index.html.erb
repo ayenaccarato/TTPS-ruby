@@ -18,8 +18,8 @@
     <% @turns.each do |turn|  %>
       <tr>
         <td> <%= turn.date %> </td>
-        <td> <%= turn.sucursal %> </td>
-        <td> <%= turn.user %> </td>
+        <td> <%= turn.sucursal.nombre %> </td>
+        <td> <%= turn.user.name %> </td>
         <td> <%= turn.employee %> </td>
         <td> <%= link_to "Detalles", turn_path(turn), class: "btn btn-primary" %> </td>
       </tr>

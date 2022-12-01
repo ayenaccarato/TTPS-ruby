@@ -2,8 +2,8 @@ class TurnsController < ApplicationController
   before_action :set_turn, only: %i[ show edit update destroy ]
 
   # GET /turns or /turns.json
-  def index
-    @turns = Turn.all
+  def index    
+    @turns = current_user.turns
   end
 
   # GET /turns/1 or /turns/1.json
@@ -22,8 +22,7 @@ class TurnsController < ApplicationController
   # POST /turns or /turns.json
   def create
     @turn = Turn.new(turn_params)
-    @turn.user_id =  #guardar el id del usuario?
-    @turn.status = 'pendiente'
+    @turn.user_id = current_user.id
 
     respond_to do |format|
       if @turn.save

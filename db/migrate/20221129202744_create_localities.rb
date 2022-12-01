@@ -3,9 +3,9 @@ class CreateLocalities < ActiveRecord::Migration[7.0]
     create_table :localities do |t|
       t.integer :province
       t.string :name
-      t.references :sucursal, null: true, foreign_key: true, optional: true
 
       t.timestamps
     end
+    add_index :localities, [:province, :name], unique: true
   end
 end
