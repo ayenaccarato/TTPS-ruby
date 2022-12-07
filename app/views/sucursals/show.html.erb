@@ -26,8 +26,11 @@
 
     
     </div>
-    
-    <%= link_to "Editar sucursal", edit_sucursal_path(@sucursal), class: 'btn btn-warning' %>
-    <%= button_to "Eliminar sucursal", @sucursal, method: :delete, class: 'btn btn-danger' %>
+    <% if can? :update, Sucursal %>
+      <%= link_to "Editar sucursal", edit_sucursal_path(@sucursal), class: 'btn btn-warning' %>
+    <% end %>
+    <% if can? :delete, Sucursal %>
+      <%= button_to "Eliminar sucursal", @sucursal, method: :delete, class: 'btn btn-danger' %>
+    <% end %>
     <%= link_to "Volver al listado", sucursals_path, class: 'btn btn-outline-primary' %>
 </div>

@@ -1,10 +1,12 @@
 <h1> Lista de turnos </h1>
-<a href="<%= new_turn_path %>" class="btn btn-primary btn-icon-split">
-  <span class="icon text-white-50">
-    <i class="fas fa-flag"></i>
-  </span>
-  <span class="text"> Nuevo turno</span>
-</a>
+<% if can? :create, Turn %>
+  <a href="<%= new_turn_path %>" class="btn btn-primary btn-icon-split">
+    <span class="icon text-white-50">
+      <i class="fas fa-flag"></i>
+    </span>
+    <span class="text"> Nuevo turno</span>
+  </a>
+<% end %>
 
 <br><br><br>
 <table class="table table-bordered">
@@ -17,11 +19,20 @@
   <tbody>
     <% @turns.each do |turn|  %>
       <tr>
-        <td> <%= turn.date %> </td>
+        <td> <%= turn.date.strftime("%d/%m/%y %H:%M") %> </td>
         <td> <%= turn.sucursal.nombre %> </td>
         <td> <%= turn.user.name %> </td>
-        <td> <%= turn.employee %> </td>
+        <% if !turn.employee.nil? %>
+            <td><%= User.find(turn.employee.id).name %></td>
+          <% else %>
+            <td></td>
+          <% end %>
         <td> <%= link_to "Detalles", turn_path(turn), class: "btn btn-primary" %> </td>
+        <% if can? :update, Turn %>
+          <% if (current_user.rol == 'personal_bancario') && (turn.status == 'pendiente')  %>
+            <td> <%= link_to "Atender", edit_turn_path(turn), class: "btn btn-success" %> </td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

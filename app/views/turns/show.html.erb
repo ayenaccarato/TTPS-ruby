@@ -6,7 +6,7 @@
       <table class="table">
         <tr>
           <td><b>Fecha y hora: </b></td>
-          <td><%= @turn.date %></td>
+          <td><%= @turn.date.strftime("%d/%m/%y %H:%M") %></td>
         </tr>
         <tr>
           <td><b>Sucursal: </b></td>
@@ -38,8 +38,9 @@
 
     
     </div>
-    
-    <%= link_to "Editar turno", edit_turn_path(@turn), class: 'btn btn-warning' %>
-    <%= button_to "Eliminar turno", @turn, method: :delete, class: 'btn btn-danger' %>
+    <% if current_user.rol == 'cliente' && @turn.status == 'pendiente' %>
+      <%= link_to "Editar turno", edit_turn_path(@turn), class: 'btn btn-warning' %>
+      <%= button_to "Cancelar turno", @turn, form: { data: { turbo_confirm: "Estas seguro?" } }, method: :delete, class: 'btn btn-danger' %>
+    <% end %>
     <%= link_to "Volver al listado", turns_path, class: 'btn btn-outline-primary' %>
 </div>

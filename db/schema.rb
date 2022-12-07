@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_215322) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_013143) do
   create_table "horarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "dia", null: false
     t.time "desde"
@@ -28,6 +28,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_215322) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["province", "name"], name: "index_localities_on_province_and_name", unique: true
+  end
+
+  create_table "sucursales_horarios", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "sucursal_id", null: false
+    t.bigint "horario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["horario_id"], name: "index_sucursales_horarios_on_horario_id"
+    t.index ["sucursal_id"], name: "index_sucursales_horarios_on_sucursal_id"
   end
 
   create_table "sucursals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -72,6 +81,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_215322) do
   end
 
   add_foreign_key "horarios", "sucursals"
+  add_foreign_key "sucursales_horarios", "horarios"
+  add_foreign_key "sucursales_horarios", "sucursals"
   add_foreign_key "sucursals", "localities"
   add_foreign_key "turns", "sucursals"
   add_foreign_key "turns", "users"

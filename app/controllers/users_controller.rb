@@ -6,7 +6,12 @@ class UsersController < ApplicationController
   # attr_accessor :listado_users = false
 
   def index
-    @users = User.all
+    @user = current_user
+    if @user.rol == 'personal_bancario'
+      @users = User.where(rol: 'cliente')
+    else 
+      @users = User.all
+    end
   end
 
   def show
@@ -24,6 +29,9 @@ class UsersController < ApplicationController
 
   def create
     p @user = User.new(user_params) 
+    if @user.rol == 'administrador'
+      @user.sucursals_id = nil
+    end
     respond_to do |format|
       if @user.save
         format.html { redirect_to user_url(@user), notice: "El usuario se creó exitosamente." }
@@ -63,7 +71,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:name, :email, :rol, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :rol, :password, :password_confirmation, :sucursals_id)
     end
 
 end

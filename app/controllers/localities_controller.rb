@@ -50,11 +50,15 @@ class LocalitiesController < ApplicationController
 
   # DELETE /localities/1 or /localities/1.json
   def destroy
-    @locality.destroy
+    if Sucursal.localities_sucursal(@locality.id).empty?
+      @locality.destroy
 
-    respond_to do |format|
-      format.html { redirect_to localities_url, notice: "Locality was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to localities_url, notice: "Locality was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      flash[:notice] = "No se puede eliminar la localidad"
     end
   end
 

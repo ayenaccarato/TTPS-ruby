@@ -16,6 +16,16 @@
           <td><b>Rol: </b></td>
           <td><%= @user.rol %></td>
         </tr>
+
+        <tr>
+          <td><b>Sucursal: </b></td>
+          <% if !@user.sucursals_id.nil? %>
+            <td><%= Sucursal.find(@user.sucursals_id).nombre %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+        
+        </tr>
       
       </table>
     </div>

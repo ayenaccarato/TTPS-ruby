@@ -2,15 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, path: '/users_admin'
   
-  resources :turns
-  resources :localities
-  resources :sucursals do
+  resources :turns do 
     member do 
-      get :nuevo_horario
-      post :crear_horario
-      get :horarios
-    end
+      post :cancel 
+    end 
   end
+
+  resources :localities
+  resources :sucursals
+    
+  resources :horarios
 
   get 'index/home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,6 +1,8 @@
 class SucursalsController < ApplicationController
 
-  load_and_authorize_resource
+  load_and_authorize_resource 
+  #load_and_authorize_resource :sucursal, through: :horario
+
   before_action :set_sucursal, only: %i[ show edit update destroy ]
 
   # GET /sucursals or /sucursals.json
@@ -52,41 +54,20 @@ class SucursalsController < ApplicationController
 
   # DELETE /sucursals/1 or /sucursals/1.json
   def destroy
-    @sucursal.destroy
+    if Turn.turns_sucursal(@sucursal.id).empty?
+      @sucursal.destroy
 
-    respond_to do |format|
-      format.html { redirect_to sucursals_url, notice: "Sucursal was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
-
-  def nuevo_horario
-    @sucursal = Sucursal.find(params[:id])
-    @horario = Horario.new
-  end
-
-  def crear_horario
-    @sucursal = Sucursal.find(params[:id])
-    @horario = Horario.new(horario_params)
-    @horario.sucursal_id = @sucursal.id
-    if @horario.save
-      redirect_to @sucursal, notices: "Se agregó el horario correctamente"
+      respond_to do |format|
+        format.html { redirect_to sucursals_url, notice: "Sucursal was successfully destroyed." }
+        format.json { head :no_content }
+      end
     else
-      flash[:notice] = "Ha ocurrido un error"
-      render :nuevo_horario, status: :unprocessable_entity
+      flash[:notice] = "No se puede eliminar la sucursal"
+      render :sucursal, status: :unprocessable_entity
     end
-  end
-
-  def horarios
-    @horarios = Horario.all
   end
 
   private
-
-    def horario_params
-      params.require(:horario).permit(:dia, :desde, :hasta)
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_sucursal
       @sucursal = Sucursal.find(params[:id])

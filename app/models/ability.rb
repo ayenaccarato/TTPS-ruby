@@ -36,7 +36,13 @@ class Ability
         us.id != user.id
       end
 
-      can :manage, :all 
+      can :manage, User
+      can :manage, Locality
+      can :manage, Sucursal
+      can :manage, Horario
+
+
+      #can :manage, :all 
 
     elsif user.rol == 'personal_bancario'
       return unless user.rol == 'personal_bancario' # additional permissions for personal bancario
@@ -53,10 +59,17 @@ class Ability
       end
 
       can :update, Turn do |turn|
-        turno.sucursal_id == user.sucursal_id
+        turn.sucursal_id == user.sucursal_id
       end
 
       can :read, Sucursal
+
+      can :read, Horario
+
+      can :read, User do |us|
+        us.rol == 'cliente'
+      end
+      
     
     else
       return unless user.rol == 'cliente' # additional permissions for cliente

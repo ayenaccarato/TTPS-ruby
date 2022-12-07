@@ -1,4 +1,6 @@
-<a href="<%= nuevo_horario_sucursal_path %>" class="btn btn-primary btn-icon-split">
+<h1> Horarios </h1>
+
+<a href="<%= new_horario_path %>" class="btn btn-primary btn-icon-split">
     <span class="icon text-white-50">
         <i class="fas fa-flag"></i>
     </span>
@@ -19,11 +21,10 @@
                 <td> <%= horario.dia %> </td>
                 <td> <%= horario.desde.strftime("%H:%M") %> </td>
                 <td> <%= horario.hasta.strftime("%H:%M") %> </td>
-                
+                <td> <%= link_to "Detalles", horario_path(horario), class: "btn btn-primary" %> </td>
             </tr>
         <% end %>
     </tbody>
     
 </table>
 <td> <%= link_to "Volver", sucursals_path, class: "btn btn-primary" %> </td>
-
