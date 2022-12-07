@@ -30,7 +30,7 @@
       <%= link_to "Editar sucursal", edit_sucursal_path(@sucursal), class: 'btn btn-warning' %>
     <% end %>
     <% if can? :delete, Sucursal %>
-      <%= button_to "Eliminar sucursal", @sucursal, method: :delete, class: 'btn btn-danger' %>
+      <%= button_to "Eliminar sucursal", @sucursal, form: { data: { turbo_confirm: "Estas seguro?" } },method: :delete, class: 'btn btn-danger' %>
     <% end %>
     <%= link_to "Volver al listado", sucursals_path, class: 'btn btn-outline-primary' %>
 </div>

@@ -1,7 +1,6 @@
 class SucursalsController < ApplicationController
 
   load_and_authorize_resource 
-  #load_and_authorize_resource :sucursal, through: :horario
 
   before_action :set_sucursal, only: %i[ show edit update destroy ]
 
@@ -55,15 +54,17 @@ class SucursalsController < ApplicationController
   # DELETE /sucursals/1 or /sucursals/1.json
   def destroy
     if Turn.turns_sucursal(@sucursal.id).empty?
-      @sucursal.destroy
+      if Sucursal.chequeo_eliminar(@sucursal.id).empty?
+        @sucursal.destroy
 
-      respond_to do |format|
-        format.html { redirect_to sucursals_url, notice: "Sucursal was successfully destroyed." }
-        format.json { head :no_content }
+        respond_to do |format|
+          format.html { redirect_to sucursals_url, notice: "Sucursal was successfully destroyed." }
+          format.json { head :no_content }
+        end
+      else
+        flash[:notice] = "No se puede eliminar la sucursal"
+        redirect_to sucursals_url
       end
-    else
-      flash[:notice] = "No se puede eliminar la sucursal"
-      render :sucursal, status: :unprocessable_entity
     end
   end
 

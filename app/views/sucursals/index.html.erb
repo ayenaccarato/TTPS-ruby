@@ -1,4 +1,5 @@
 <h1> Lista de sucursales </h1>
+
 <% if can? :create, Sucursal %>
   <a href="<%= new_sucursal_path %>" class="btn btn-primary btn-icon-split">
     <span class="icon text-white-50">
@@ -7,6 +8,7 @@
     <span class="text"> Crear sucursal</span>
   </a>
 <% end %>
+
 
 <br><br><br>
 <table class="table table-bordered">

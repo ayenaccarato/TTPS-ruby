@@ -1,14 +1,14 @@
 class HorariosController < ApplicationController
 
-    load_and_authorize_resource 
+  load_and_authorize_resource 
 
-    def index
-        @horarios = Horario.where(sucursal_id: params[:id_s])
-    end
+  def index
+    @horarios = Horario.where(sucursal_id: params[:id_s])
+  end
 
-    def new
-        @horario = Horario.new
-    end
+  def new
+    @horario = Horario.new
+  end
     
     # POST /sucursals or /sucursals.json
   def create
@@ -38,10 +38,10 @@ class HorariosController < ApplicationController
     end
   end
 
-    private 
-        def horario_params
-            params.require(:horario).permit(:dia, :desde, :hasta, :sucursal_id)
-        end
+  private 
+    def horario_params
+      params.require(:horario).permit(:dia, :desde, :hasta, :sucursal_id)
+    end
     
       
 

@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, :uniqueness => true # if: :personal_bancario?
+  validates :email, :uniqueness => true 
+  #validates :sucursals_id, optional: false, if: :personal_bancario?
  
   enum :rol, [ :administrador, :personal_bancario, :cliente]
 

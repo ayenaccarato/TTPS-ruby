@@ -1,1 +1,14 @@
-<h1>Bienvenido/a</h1>
+<center><h1>Bienvenido/a</h1></center>
+
+<% if current_user.rol == 'cliente' %>
+    <% if !current_user.turns.empty? %>
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><b>Recordatorio</b></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Próximo turno</h6>
+            <p class="card-text"><%= current_user.turns.where(status: 'pendiente').first.date.strftime("%A, %d/%m/%y %H:%M") %> </p>
+            <a href="<%= turn_path(current_user.turns.first) %>" class="card-link">Ver turno</a>
+        </div>
+        </div>
+    <% end %>
+<% end %>

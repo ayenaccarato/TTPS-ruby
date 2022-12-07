@@ -1,7 +1,7 @@
 class Sucursal < ApplicationRecord
   belongs_to :locality
-  has_and_belongs_to_many :horario, optional: true
-  has_many :horarios
+  has_many :horarios #, dependent: :destroy
+  has_many :turns #, dependent: :destroy
 
 
   validates :nombre, :direccion, :tel, :locality_id, presence: true 
@@ -18,6 +18,10 @@ class Sucursal < ApplicationRecord
       end
     end
 
+  end
+
+  def self.chequeo_eliminar(suc)
+    User.where(sucursals_id: suc)
   end
 
 end

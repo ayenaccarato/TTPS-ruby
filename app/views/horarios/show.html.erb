@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1>Detalles del horario</h1>    
+    <h1>Detalles del horario</h1>  
     
     <div class="card">
       <table class="table">
@@ -30,7 +30,7 @@
       <%= link_to "Editar horario", edit_horario_path(@horario), class: 'btn btn-warning' %>
     <% end %>
     <% if can? :delete, Horario %>
-      <%= button_to "Eliminar horario", @horario, method: :delete, class: 'btn btn-danger' %>
+      <%= button_to "Eliminar horario", @horario, form: { data: { turbo_confirm: "Estas seguro?" } },method: :delete, class: 'btn btn-danger' %>
     <% end %>
-    <%= link_to "Volver al listado", horarios_path, class: 'btn btn-outline-primary' %>
+    <%= link_to "Volver al listado", sucursals_path, class: 'btn btn-outline-primary' %>
 </div>

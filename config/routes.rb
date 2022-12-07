@@ -2,11 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, path: '/users_admin'
   
-  resources :turns do 
-    member do 
-      post :cancel 
-    end 
-  end
+  resources :turns
 
   resources :localities
   resources :sucursals
