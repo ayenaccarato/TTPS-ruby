@@ -3,21 +3,21 @@
     <div class="card p-5">
         <%= form_with(model: horario) do |f| %>
                     
-            <% if @horario.errors.any? %>
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <h3> <%= flash[:notice] %> </h3>
+            <% if horario.errors.any? %>
+                <div style="color: red">
+                    <h2><%= pluralize(horario.errors.count, "error") %> prohibited this sucursal from being saved:</h2>
+    
                     <ul>
-                        <% @horario.errors.full_messages do |message| %>
-                            <li><%= message %></li>
+                        <% horario.errors.each do |error| %>
+                            <li><%= error.full_message %></li>
                         <% end %>
                     </ul>
                 </div>
-                    
             <% end %>
             
             <div class="form-group">
                 <%= f.label :dia, "Día" %>                   
-                <%= f.select :dia, options_for_select(Horario.dia.keys), {}, {class: 'form-control-sm'} %>
+                <%= f.select :dia, options_for_select(Horario.dia.keys, @horario.dia), {}, {class: 'form-control-sm'} %>
                 
             </div>            
             
@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <%= f.submit "Agregar", class: 'btn btn-primary' %>
-                <%= link_to "Cancelar", horarios_path, class: 'btn btn-danger' %>
+                <%= link_to "Cancelar", sucursals_path, class: 'btn btn-danger' %>
             </div>
 
         <% end %>

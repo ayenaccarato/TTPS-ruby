@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :turns
   devise_for :users
   resources :users, path: '/users_admin'
   
-  resources :turns
 
   resources :localities
   resources :sucursals

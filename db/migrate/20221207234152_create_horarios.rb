@@ -5,9 +5,10 @@ class CreateHorarios < ActiveRecord::Migration[7.0]
       t.time :desde
       t.time :hasta
       t.references :sucursal, null: false, foreign_key: true
-
+      
       t.timestamps
     end
     add_index :horarios, [:sucursal_id, :dia], unique: true
   end
+    
 end

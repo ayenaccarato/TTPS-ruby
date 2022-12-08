@@ -13,4 +13,21 @@ class Turn < ApplicationRecord
   def self.turns_sucursal(sucursal)
     Turn.all.where(sucursal_id: sucursal, status: 'pendiente')     
   end
+
+  def self.validar_fecha_hora(date, id_suc)
+    date = date.to_datetime
+    if date.to_date > DateTime.now.to_date
+      p horarios = Horario.where(sucursal_id: id_suc) 
+      horarios.each do |hora|
+        if hora.dia = date.strftime("%A").downcase
+          return date.strftime("%H:%M").between?(hora.desde.strftime("%H:%M"),hora.hasta.strftime("%H:%M"))
+        else 
+          return false
+        end
+      end
+    else 
+      return false
+    end
+  end
+
 end

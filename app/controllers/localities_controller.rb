@@ -58,7 +58,10 @@ class LocalitiesController < ApplicationController
         format.json { head :no_content }
       end
     else
-      flash[:notice] = "No se puede eliminar la localidad"
+      respond_to do |format|
+        format.html { redirect_to localities_url, notice: "La localidad no puede ser eliminada" }
+        format.json { render json: @locality.errors, status: :unprocessable_entity  }
+      end
     end
   end
 

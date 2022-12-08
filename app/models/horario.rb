@@ -8,5 +8,11 @@ class Horario < ApplicationRecord
   def self.horarios_suc (suc)
     Horario.where(sucursal_id: suc)
   end
-  
+
+  def self.validar_datos(inicio, fin)
+    inicio = inicio.split(':')
+    fin = fin.split(':')
+    p fin[0] > inicio[0]
+    return fin[0] > inicio[0]
+  end
 end

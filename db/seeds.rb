@@ -30,6 +30,6 @@ User.create( name: "Personal_bancario2", email: "personalBancario2@gmail.com", p
 User.create( name: "Personal_bancario3", email: "personalBancario3@gmail.com", password: "123456", password_confirmation: "123456", rol: 1, sucursals_id: 3)
 User.create( name: "Cliente", email: "cliente@gmail.com", password: "123456", password_confirmation: "123456", rol: 2)
 
-Turn.create( date: "20-12-2022 13:30", motive:"Préstamo", status: 0, sucursal_id: 1, user_id: 3)
-Turn.create( date: "05-01-2022 09:30", motive:"Crear una cuenta", status: 0, sucursal_id: 2, user_id: 3)
-Turn.create( date: "09-01-2022 14:00", motive:"Reclamo", status: 0, sucursal_id: 3, user_id: 3)
+Turn.create( date: "20-12-2022 13:30", motive:"Préstamo", status: 0, sucursal_id: 1, user_id: 5)
+Turn.create( date: "05-01-2022 09:30", motive:"Crear una cuenta", status: 0, sucursal_id: 2, user_id: 5)
+Turn.create( date: "09-01-2022 14:00", motive:"Reclamo", status: 0, sucursal_id: 3, user_id: 5)

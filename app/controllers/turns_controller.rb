@@ -23,9 +23,9 @@ class TurnsController < ApplicationController
   def create
     @turn = Turn.new(turn_params)
     @turn.user_id = current_user.id
-    
-    if Sucursal.dia_horario(@turn)
-      respond_to do |format|
+  
+    respond_to do |format|
+      if Sucursal.dia_horario(@turn)
         if @turn.save
           format.html { redirect_to turn_url(@turn), notice: "Turn was successfully created." }
           format.json { render :show, status: :created, location: @turn }
@@ -33,10 +33,12 @@ class TurnsController < ApplicationController
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @turn.errors, status: :unprocessable_entity }
         end
+      
+      else       
+        @turn.errors.add(:date, :invalid)
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @turn.errors, status: :unprocessable_entity }
       end
-    else       
-      flash[:notice] = "No hay disponibilidad para ese dia"
-      render :new
     end
   end
 
@@ -48,9 +50,15 @@ class TurnsController < ApplicationController
       @turn.status = 'atendido'
       update_turn(@turn)
     else @user.rol == 'cliente'
-      if @turn.status == 'pendiente'
-        update_turn(@turn)
-      end
+        if Turn.validar_fecha_hora(turn_params[:date], turn_params[:sucursal_id])
+          update_turn(@turn)
+        else 
+          @turn.errors.add(:date, :invalid)
+          respond_to do |format|
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @turn.errors, status: :unprocessable_entity }
+          end
+        end
     end
   end
 
