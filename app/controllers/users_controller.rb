@@ -56,6 +56,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    if @user.rol == 'personal_bancario'
+      turnos = Turn.turns_personal(@user.id)
+      Turn.eliminar(turnos)
+    end
+
     @user.destroy
 
     respond_to do |format|

@@ -30,4 +30,14 @@ class Turn < ApplicationRecord
     end
   end
 
+  def self.turns_personal(personal)
+    Turn.where(employee_id: personal)
+  end
+
+  def self.eliminar(turnos)
+    turnos.each do |turn|
+      turn.destroy
+    end
+  end
+
 end

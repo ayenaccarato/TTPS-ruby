@@ -3,6 +3,17 @@
     <div class="card p-5"> 
     <%= form_with(model: user) do |f| %> 
 
+      <% if user.errors.any? %>
+        <div style="color: red">
+            <h2><%= pluralize(user.errors.count, "error") %> prohibited this sucursal from being saved:</h2>
+
+            <ul>
+                <% user.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+      <% end %>
       
         <div class="field">
           <%= f.label :name %><br />
