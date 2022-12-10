@@ -29,5 +29,8 @@
     <% if can? :update, Horario %>
       <%= link_to "Editar horario", edit_horario_path(@horario), class: 'btn btn-warning' %>
     <% end %>
+    <% if can? :delete, Horario %>
+      <%= button_to "Eliminar horario", @horario, form: { data: { turbo_confirm: "Estas seguro?" } },method: :delete, class: 'btn btn-danger' %>
+    <% end %>
     <%= link_to "Volver al listado", sucursals_path, class: 'btn btn-outline-primary' %>
 </div>

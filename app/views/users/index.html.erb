@@ -1,12 +1,15 @@
 <h1> Lista de usuarios </h1>
-<a href="<%= new_user_path %>" class="btn btn-primary btn-icon-split">
-  <span class="icon text-white-50">
-    <i class="fas fa-flag"></i>
-    </span>
-    <span class="text"> Crear usuario</span>
-</a>
+<br><br>
+<% if can? :create, User %>
+  <a href="<%= new_user_path %>" class="btn btn-primary btn-icon-split">
+    <span class="icon text-white-50">
+      <i class="fas fa-flag"></i>
+      </span>
+      <span class="text"> Crear usuario</span>
+  </a>
+<% end %>
 
-<br>
+<br><br>
 <table class="table">
   <thead>
     <th>Nombre</th>

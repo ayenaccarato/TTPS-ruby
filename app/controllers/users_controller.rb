@@ -56,16 +56,18 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.rol == 'personal_bancario'
+    if @user.rol == 'personal_bancario' || @user.rol == 'cliente'
       turnos = Turn.turns_personal(@user.id)
       Turn.eliminar(turnos)
     end
+    if current_user.id != @user.id
 
-    @user.destroy
+      @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 

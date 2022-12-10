@@ -1,5 +1,5 @@
-<h1> Lista de sucursales </h1>
-
+<center><h1> Lista de sucursales </h1></center>
+<br><br>
 <% if can? :create, Sucursal %>
   <a href="<%= new_sucursal_path %>" class="btn btn-primary btn-icon-split">
     <span class="icon text-white-50">
@@ -8,9 +8,17 @@
     <span class="text"> Crear sucursal</span>
   </a>
 <% end %>
+<% if can? :create, Horario %>
+    <a href="<%= new_horario_path %>" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-flag"></i>
+        </span>
+        <span class="text"> Agregar horario</span>
+    </a>
+<% end %>
 
 
-<br><br><br>
+<br><br>
 <table class="table table-bordered">
   <thead>
     <th>Nombre</th>

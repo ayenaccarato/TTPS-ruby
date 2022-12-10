@@ -3,7 +3,7 @@ class Sucursal < ApplicationRecord
   has_many :horarios, dependent: :destroy
   has_many :turns, dependent: :destroy
 
-
+  validates :nombre, uniqueness: { case_sensitive: false }
   validates :nombre, :direccion, :tel, :locality_id, presence: true 
 
   def self.localities_sucursal(locality)

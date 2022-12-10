@@ -3,7 +3,7 @@ class TurnsController < ApplicationController
 
   # GET /turns or /turns.json
   def index    
-    @turns = current_user.turns
+    @turns = current_user.turns.order(:date => :asc)
   end
 
   # GET /turns/1 or /turns/1.json

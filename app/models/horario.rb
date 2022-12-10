@@ -15,4 +15,8 @@ class Horario < ApplicationRecord
     p fin[0] > inicio[0]
     return fin[0] > inicio[0]
   end
+
+  def self.sucursal_horarios(id_s)
+    Horario.where(sucursal_id: id_s)
+  end
 end

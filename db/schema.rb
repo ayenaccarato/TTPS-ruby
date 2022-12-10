@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_234255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["locality_id"], name: "index_sucursals_on_locality_id"
+    t.index ["nombre"], name: "index_sucursals_on_nombre", unique: true
   end
 
   create_table "turns", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

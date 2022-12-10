@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+ h1 {
+    color: black;
+    text-align: center;
+ }
+
+ .bienvenida {
+    color: black;
+    text-align: center;
+    padding: 25%;
+ }
+
+ .cliente {
+    color: black;
+    text-align: center;
+
+ }
+
+ /* .card {
+    width: 18rem;
+    background-color:lightblue;
+ } */
+
+ .card-title {
+    color:black;
+    text-align: center;
+ }

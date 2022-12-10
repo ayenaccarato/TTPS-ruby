@@ -14,10 +14,12 @@
                     </ul>
                 </div>
             <% end %>
+
+
             
             <div class="form-group">
                 <%= f.label :dia, "Día" %>                   
-                <%= f.select :dia, options_for_select(Horario.dia.keys, @horario.dia), {}, {class: 'form-control-sm'} %>
+                <%= f.select :dia, options_for_select(get_dias, @horario.dia), {}, {class: 'form-control-sm'} %>
                 
             </div>            
             

@@ -8,5 +8,6 @@ class CreateSucursals < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :sucursals, [:nombre], unique: true
   end
 end

@@ -31,12 +31,14 @@ class Turn < ApplicationRecord
   end
 
   def self.turns_personal(personal)
-    Turn.where(employee_id: personal)
+    Turn.where('employee_id:? OR user_id:?', personal, personal)
   end
 
   def self.eliminar(turnos)
-    turnos.each do |turn|
-      turn.destroy
+    if !turnos.empty?
+      turnos.each do |turn|
+        turn.destroy
+      end
     end
   end
 

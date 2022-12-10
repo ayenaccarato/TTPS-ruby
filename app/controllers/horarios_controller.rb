@@ -3,7 +3,7 @@ class HorariosController < ApplicationController
 
   # GET /horarios or /horarios.json
   def index
-    @horarios = Horario.where(sucursal_id: params[:id_s])
+    @horarios = Horario.sucursal_horarios(params[:id_s])
   end
 
   # GET /horarios/1 or /horarios/1.json
@@ -25,7 +25,6 @@ class HorariosController < ApplicationController
     
     respond_to do |format|
       if Horario.validar_datos(horario_params[:desde], horario_params[:hasta])
-        p "if"
         if @horario.save
           format.html { redirect_to horario_url(@horario), notice: "Horario was successfully created." }
           format.json { render :show, status: :created, location: @horario }
@@ -34,7 +33,6 @@ class HorariosController < ApplicationController
           format.json { render json: @horario.errors, status: :unprocessable_entity }
         end
       else 
-        p "else"
         @horario.errors.add(:desde, :invalid)
         @horario.errors.add(:hasta, :invalid)
         format.html { render :new, status: :unprocessable_entity }
@@ -64,15 +62,15 @@ class HorariosController < ApplicationController
     end
   end
 
-  # # DELETE /horarios/1 or /horarios/1.json
-  # def destroy
-  #   @horario.destroy
+  # DELETE /horarios/1 or /horarios/1.json
+  def destroy
+    @horario.destroy
 
-  #   respond_to do |format|
-  #     format.html { redirect_to horarios_url, notice: "Horario was successfully destroyed." }
-  #     format.json { head :no_content }
-  #   end
-  # end
+    respond_to do |format|
+      format.html { redirect_to sucursals_url, notice: "Horario was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

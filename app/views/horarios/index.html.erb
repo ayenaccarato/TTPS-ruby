@@ -1,11 +1,4 @@
-<h1> Horarios </h1>
-
-<a href="<%= new_horario_path %>" class="btn btn-primary btn-icon-split">
-    <span class="icon text-white-50">
-        <i class="fas fa-flag"></i>
-    </span>
-    <span class="text"> Agregar horario</span>
-</a>
+<center><h1> Horarios </h1></center>
 <br><br><br>
 <table class="table table-bordered">   
 
@@ -21,6 +14,12 @@
                 <td> <%= horario.dia %> </td>
                 <td> <%= horario.desde.strftime("%H:%M") %> </td>
                 <td> <%= horario.hasta.strftime("%H:%M") %> </td>
+                <% if can? :update, Horario %>
+                   <td> <%= link_to "Editar horario", edit_horario_path(horario, id_s: params[:id_s]), class: 'btn btn-warning' %></td>
+                <% end %>
+                <% if can? :delete, Horario %>
+                   <td> <%= button_to "Eliminar horario", horario, form: { data: { turbo_confirm: "Estas seguro?" } },method: :delete, class: 'btn btn-danger' %></td>
+                <% end %>
                 <td> <%= link_to "Detalles", horario_path(horario), class: "btn btn-primary" %> </td>
             </tr>
         <% end %>
