@@ -10,9 +10,9 @@ Locality.create( province: 0, name: "LA PLATA")
 Locality.create( province: 4, name: "VILLA CARLOS PAZ")
 Locality.create( province: 0, name: "ENSENADA")
 
-Sucursal.create( nombre: "SUCURSAL_1", direccion: "7 y 49", tel: "4526987", locality_id: 1)
-Sucursal.create( nombre: "CREDICOOP", direccion: "Av. Ruiz Cortines 299", tel: "4859671", locality_id: 3)
-Sucursal.create( nombre: "BANCO FRANCES", direccion: "Av. San Martin 49", tel: "458960", locality_id: 2)
+Sucursal.create( nombre: "SUCURSAL 1", direccion: "7 y 49", tel: "4526987", locality_id: 1)
+Sucursal.create( nombre: "SUCURSAL 2", direccion: "Av. Ruiz Cortines 299", tel: "4859671", locality_id: 3)
+Sucursal.create( nombre: "SUCURSAL 3", direccion: "Av. San Martin 49", tel: "458960", locality_id: 2)
 
 Horario.create( dia: 0, desde: "2000-01-01 08:00:00 UTC", hasta: "2000-01-01 13:00:00 UTC", sucursal_id: 1) #Lunes
 Horario.create( dia: 2, desde: "2000-01-01 09:00:00 UTC", hasta: "2000-01-01 12:00:00 UTC", sucursal_id: 1) #Miercoles
@@ -31,5 +31,5 @@ User.create( name: "Personal_bancario3", email: "personalBancario3@gmail.com", p
 User.create( name: "Cliente", email: "cliente@gmail.com", password: "123456", password_confirmation: "123456", rol: 2)
 
 Turn.create( date: "20-12-2022 13:30", motive:"Préstamo", status: 0, sucursal_id: 1, user_id: 5)
-Turn.create( date: "05-01-2022 09:30", motive:"Crear una cuenta", status: 0, sucursal_id: 2, user_id: 5)
-Turn.create( date: "09-01-2022 14:00", motive:"Reclamo", status: 0, sucursal_id: 3, user_id: 5)
+Turn.create( date: "05-01-2023 09:30", motive:"Crear una cuenta", status: 0, sucursal_id: 2, user_id: 5)
+Turn.create( date: "09-01-2023 14:00", motive:"Reclamo", status: 0, sucursal_id: 3, user_id: 5)

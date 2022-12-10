@@ -5,7 +5,7 @@
     <% else %>
         <h1 class="cliente">Bienvenido/a <%= current_user.name %></h1>
         <% if !current_user.turns.empty? %>
-            <div class="card" >
+            <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title"><b>Recordatorio</b></h5>
                     <h6 class="card-subtitle mb-2 text-muted">Próximo turno</h6>
