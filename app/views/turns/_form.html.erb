@@ -30,7 +30,7 @@
           <%= form.select :sucursal_id, options_for_select(Sucursal.all.collect { |x| [x.nombre + " (" + Locality.find(x.locality_id).name + ")", x.id] }, turn.sucursal_id), class: 'form-control' %>
         </div>
         
-        <% if cannot? :create, Turn %>
+        <% if current_user.rol == 'personal_bancario' %>
           <div>
             <%= form.label :result, style: "display: block" %>
             <%= form.text_field :result, class: 'form-control' %>
@@ -41,6 +41,33 @@
           <%= form.submit 'Guardar' %>
         </div>
       <% end %>
+      <% if can? :create, Turn %>         
+            <% Sucursal.all.each do |suc| %>
+              <br>
+              <p> Horarios para <%= suc.nombre %> </p>
+              <table class="table-info table-striped-columns">   
+
+                  <thead>
+                      <th>Día</th>
+                      <th>Apertura</th>
+                      <th>Cierre</th>
+                  </thead>
+
+                  <tbody>
+                      <% Horario.horarios_suc(suc.id).each do |horario|  %>
+                          <tr>
+                              <td> <%= horario.dia %> </td>
+                              <td> <%= horario.desde.strftime("%H:%M") %> </td>
+                              <td> <%= horario.hasta.strftime("%H:%M") %> </td>
+                          </tr>
+                      <% end %>
+                  </tbody>
+      
+              </table>
+            <% end %>
+            
+          </table>
+        <% end %>
     </div>
   </div>
 </div>

@@ -87,6 +87,7 @@ class Ability
         turn.user_id == user.id
       end
 
+      can :read, Horario
     end
   end
 

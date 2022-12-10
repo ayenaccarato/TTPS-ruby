@@ -5,7 +5,7 @@ class Horario < ApplicationRecord
 
   enum :dia, [:monday, :tuesday, :wednesday, :thursday, :friday]
 
-  def self.horarios_suc (suc)
+  def self.horarios_suc(suc)
     Horario.where(sucursal_id: suc)
   end
 
