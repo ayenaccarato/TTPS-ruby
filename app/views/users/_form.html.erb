@@ -42,7 +42,7 @@
           <%= f.label :rol, style: "display: block" %>
           <%= f.select :rol, options_for_select(get_roles, user.rol), {class: 'form-control-sm'} %>
         </div>
-
+        
         <div class="form-group">
           <%= f.label :sucursals_id, style: "display: block" %>
           <%= f.select :sucursals_id, options_for_select(Sucursal.all.collect { |x| [x.nombre, x.id] }, user.sucursals_id), {class: 'form-control-sm'} %>
